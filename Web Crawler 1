@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-def trade_spider(max_pages):
+def amazon_search(max_pages):
     page = 1
     while page <= max_pages:
         url = 'https://www.amazon.com/s/ref=sr_pg_2?fst=p90x%3A1&rh=i%3Aaps%2Ck%3Aapple&page=' + str(page) + '&keywords=apple&ie=UTF8&qid=1519603083'
@@ -14,4 +14,4 @@ def trade_spider(max_pages):
             print(href)
         page += 1
 
-trade_spider(2)
+amazon_search(2)
