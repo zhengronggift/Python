@@ -11,6 +11,8 @@ def amazon_search(max_pages):
         all_links = soup.find_all('h2')
         for link in all_links:
             href = link.get('data-attribute')
+            if not href:
+                continue
             print(href)
         page += 1
 
