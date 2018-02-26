@@ -1,0 +1,9 @@
+from PIL import Image
+
+img = Image.open("Screenshot (13).jpg")
+area = (60, 180, 1279, 779)
+cropped_img = img.crop(area)
+
+img.show()
+
+cropped_img.show()
