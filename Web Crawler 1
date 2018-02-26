@@ -1,0 +1,17 @@
+import requests
+from bs4 import BeautifulSoup
+
+def trade_spider(max_pages):
+    page = 1
+    while page <= max_pages:
+        url = 'https://www.amazon.com/s/ref=sr_pg_2?fst=p90x%3A1&rh=i%3Aaps%2Ck%3Aapple&page=' + str(page) + '&keywords=apple&ie=UTF8&qid=1519603083'
+        source_code = requests.get(url)
+        plain_text = source_code.text
+        soup = BeautifulSoup(plain_text, 'html.parser')
+        all_links = soup.find_all('h2')
+        for link in all_links:
+            href = link.get('data-attribute')
+            print(href)
+        page += 1
+
+trade_spider(2)
