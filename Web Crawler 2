@@ -1,0 +1,13 @@
+import requests
+from bs4 import BeautifulSoup
+
+def get_single_item_data(item_url):
+    source_code = requests.get(item_url)
+    plain_text = source_code.text
+    soup = BeautifulSoup(plain_text, 'html.parser')
+    for item_name in soup.find_all('span', {'id':'productTitle'}):
+        print(item_name.string)
+    for item_price in soup.find_all('span', {'id':'priceblock_ourprice'}):
+        print(item_price.string)
+
+get_single_item_data('https://www.amazon.com/Bragg-Organic-Unfiltered-Apple-Vinegar/dp/B001ID6MIC/ref=sr_1_8_a_it?ie=UTF8&qid=1519607978&sr=8-8&keywords=apple')
